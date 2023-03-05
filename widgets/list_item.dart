@@ -1,4 +1,5 @@
 import '../imports.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class MessageListItem extends StatelessWidget {
   const MessageListItem({
@@ -73,7 +74,7 @@ class MessageListItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  epoch.getTimeStamp,
+                  timeago.format(DateTime.fromMillisecondsSinceEpoch(epoch)),
                   maxLines: 1,
                   style: TextStyle(
                     color: isSelected ? Colors.white : null,

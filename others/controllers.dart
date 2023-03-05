@@ -68,4 +68,16 @@ class SiteVarController extends GetxController {
     siteController.showNewMessageComposer.value =
         !siteController.showNewMessageComposer.value;
   }
+
+  Future<void> refreshMails() async {
+    if (siteInfo.value != null) {
+      if (siteInfo.value!.certUserId != null) {
+        if (currentRoute.value == Route.inbox) {
+          await loadMessages();
+        } else if (currentRoute.value == Route.outbox) {
+          await loadMessagesSent();
+        }
+      }
+    }
+  }
 }
